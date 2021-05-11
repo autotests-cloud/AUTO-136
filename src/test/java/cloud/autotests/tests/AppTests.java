@@ -4,6 +4,7 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.*;
 
 import static cloud.autotests.helpers.DriverHelper.getConsoleLogs;
+import static com.codeborne.selenide.Selectors.byAttribute;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,11 +16,11 @@ public class AppTests extends TestBase {
     @DisplayName("Test")
     void generatedTest() {
         step("1. Open https://meet.google.com/", () -> {
-            // todo
+            open("https://meet.google.com/");
         });
 
         step("2. Click Log in button", () -> {
-            // todo
+            $(".cta-wrapper").click();
         });
     }
 
@@ -31,7 +32,7 @@ public class AppTests extends TestBase {
             open("https://meet.google.com/"));
 
         step("Page title should have text 'Google Meet (ehemals Hangouts Meet) – kostenlose Videokonferenzen'", () -> {
-            String expectedTitle = "Google Meet (ehemals Hangouts Meet) – kostenlose Videokonferenzen";
+            String expectedTitle = "Google Meet (ehemals Hangouts Meet) – kostenlose Videokonferenzen";
             String actualTitle = title();
 
             assertThat(actualTitle).isEqualTo(expectedTitle);
